@@ -32,6 +32,20 @@ route.post('/register', async(req,res)=>{
 
 route.post('/login' , async(req,res)=>{
     
+    try{
+        const user = await UserModel.findOne({name : req.body.name})
+        if(!user) return res.send('Username not found').status(400)
+        
+        const validPass = await bcrypt.compare(req.body.password , user.password)
+        if(!validPass) return res.send("Incorrect Password").status(400)
+
+        res.send({message:"Logged in"})
+        
+    }
+    catch(error){
+        res.send(error)
+    }
+
 })
 
 module.exports = route;
