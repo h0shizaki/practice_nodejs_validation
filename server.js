@@ -12,7 +12,6 @@ mongoose.connect(process.env.DB_CONNECT, ()=>
 
 //import routes
 const authRoute = require('./routes/auth')
-const auth = require('./routes/verifyToken')
 const testRoute = require('./routes/testAuth')
 
 
