@@ -12,12 +12,16 @@ mongoose.connect(process.env.DB_CONNECT, ()=>
 
 //import routes
 const authRoute = require('./routes/auth')
+const auth = require('./routes/verifyToken')
+const testRoute = require('./routes/testAuth')
 
 
 //middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+
 app.use('/api/user', authRoute )
+app.use('/data' , testRoute)
 
 
 const PORT = process.env.PORT || 3000;
