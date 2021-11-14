@@ -12,6 +12,10 @@ const UserSchema = new mongoose.Schema({
         max:1024,
         required: true
     },
+    userRole: {
+        type:Number,
+        default: 0
+    },
     date:{
         type: Number,
         default: Date.now()
